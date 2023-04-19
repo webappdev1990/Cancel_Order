@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 04/2023 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_CancelOrder
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    
+    <default>
+    	<Cancelorder>
+    		<general>
+    			<enable>1</enable>
+    			<button_text>Cancel Order</button_text>
+    			<popup_text>Cancellation may take a bit longer to reflect in your account.</popup_text>
+    		</general>
+    		<email_settings>
+    			<cancel_notification>1</cancel_notification>
+    			<email_sender>general</email_sender>
+    		</email_settings>
+    	</Cancelorder>
+    </default>
+
+</config>

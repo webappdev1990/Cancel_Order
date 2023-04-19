@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 04/2023 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_CancelOrder
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="softnoesis" translate="label" sortOrder="10" class="ks-tab-image">
+            <label>Softnoesis</label>
+        </tab>
+        <section id="Cancelorder" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Cancel Order</label>
+            <tab>softnoesis</tab>
+            <resource>Softnoesis_CancelOrder::CancelOrder_config</resource>
+            <!-- General Configuration -->
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configuration</label>
+                <comment>
+                    <![CDATA[
+                    <div id="softnoesis-info">
+                        <a href="https://www.softnoesis.com/" target="_blank">
+                        <img class="softnoesis-logo" src="https://www.softnoesis.com/images/logo.png">Softnoesis Private Limited</a>© 2022
+                        <a href="https://www.softnoesis.com/contact/" target="_blank">Contact us</a>
+                        <a href="contact@softnoesis.com">Mail for Support</a>
+                    </div>
+                    <div id="softnoesis-module">
+                        Cancel Order Extension -
+                        <span> Version 1.0.0 </span>
+                    </div>
+                    <hr style="border-top: 1px solid #e3e3e3" />
+                ]]>
+                </comment>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cancel Order</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="button_text" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Text</label>
+                    <validate>validate-length maximum-length-30</validate>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="popup_text" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cancellation Notice of Popup</label>
+                    <validate>validate-length maximum-length-100</validate>
+                    <comment>This notice will be shown in order cancellation popup.</comment>
+                </field> 
+            </group>
+            <!-- Email Settings-->
+            <group id="email_settings" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Order Cancellation Notification Settings</label>
+                <field id="cancel_notification" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send order cancel notification to admin</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="email_sender" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field> 
+            </group>
+        </section>
+    </system>
+</config>

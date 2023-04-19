@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 04/2023 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_CancelOrder
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceContainer name="content">
+			<!-- here we call our ui component of grid-->
+			<uiComponent name="ks_ordercancel_record_ordercancel_list"/>
+		</referenceContainer>
+	</body>
+</page>

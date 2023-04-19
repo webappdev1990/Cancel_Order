@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 04/2023 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_CancelOrder
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="cancelorder" frontName="cancelorder">
+            <module name="Softnoesis_CancelOrder" before="Magento_Sales" />
+        </route>
+    </router>
+</config>

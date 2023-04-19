@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 04/2023 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_CancelOrder
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<!--  Order cancel event    -->
+    <event name="order_cancel_after">
+        <observer name="ks_order_cancel" instance="Softnoesis\CancelOrder\Observer\OrderCancelAfter"/>
+    </event>
+</config>

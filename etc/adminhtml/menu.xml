@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 04/2023 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_CancelOrder
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+     	<add id="Softnoesis_CancelOrder::cancelorder" title="Order Cancel" module="Softnoesis_CancelOrder" sortOrder="10" resource="Softnoesis_CancelOrder::cancelorder"/>
+		<add id="Softnoesis_CancelOrder::orderrequest" title="Cancel Order Request" module="Softnoesis_CancelOrder" sortOrder="10" action="ordercancel/order" resource="Softnoesis_CancelOrder::order" parent="Softnoesis_CancelOrder::cancelorder"/>
+		<add id="Softnoesis_CancelOrder::Softnoesis_configuration" title="Configuration" module="Softnoesis_CancelOrder" sortOrder="99" parent="Softnoesis_CancelOrder::cancelorder" action="adminhtml/system_config/edit/section/Cancelorder" resource="Softnoesis_CancelOrder::cancelorder_configuration"/>
+	</menu>
+</config>

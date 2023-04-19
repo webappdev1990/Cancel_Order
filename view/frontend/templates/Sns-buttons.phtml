@@ -1,0 +1,109 @@
+<?php
+//overriding cancel button
+?>
+<div class="actions">
+  <?php $_order = $block->getOrder() ?>
+  <?php if ($this->helper(\Magento\Sales\Helper\Reorder::class)->canReorder($_order->getEntityId())): ?>
+  <a href="#" data-post='<?=
+  /* @noEscape */ $this->helper(\Magento\Framework\Data\Helper\PostHelper::class)
+    ->getPostData($block->getReorderUrl($_order))
+    ?>' class="action order">
+
+    <span><?= $block->escapeHtml(__('Reorder')) ?></span>
+  </a>
+  <?php endif ?>
+  
+  <?php if ($_order->getStatusLabel() == 'Pending' && $this->helper(\Softnoesis\CancelOrder\Helper\Data::class)->getOrderRequest($_order->getEntityId()) == 'false'): ?>
+      <a  class="cancel" href="#" onclick='openPopup()' >
+        <span>
+          <?php if ($this->helper(\Softnoesis\CancelOrder\Helper\Data::class)->getGeneralConfig('button_text')!= ''): ?>
+                <?=
+                  $block->escapeHtml(__($this->helper(\Softnoesis\CancelOrder\Helper\Data::class)->getGeneralConfig('button_text'))) ?>
+          <?php else: ?>
+              <?= $block->escapeHtml(__('Cancel Order')); ?>
+          <?php endif ; ?>
+       </span>
+      </a>
+      <div id="popup-modal-ordercancel" style="display:none;">
+            <p class="popup-lable"> Are you sure to cancel your order?</p>
+            <form action=""  method="post" id="cancel-request"  enctype="multipart/form-data" autocomplete="off"      data-mage-init='{ "validation":{}}' >
+
+                <textarea id='comment' maxlength="350" name = 'comment' required="true" class='comment' placeholder='Please specify the reason for order cancelling.' ></textarea>
+                <p class="message-lable" id='message'><?= $block->escapeHtml(__($this->helper(\Softnoesis\CancelOrder\Helper\Data::class)->getGeneralConfig('popup_text'))) ?></p>
+
+            </form>
+
+      </div>
+
+  <?php elseif ($_order->getStatusLabel() == 'Pending' && $this->helper(\Softnoesis\CancelOrder\Helper\Data::class)->getOrderRequest($_order->getEntityId()) == 'true'): ?>
+    Order Cancellation in progress...
+  <?php endif ?>
+  
+  <a class="action print"
+    href="<?= $block->escapeUrl($block->getPrintUrl($_order)) ?>"
+    onclick="this.target='_blank';">
+        <span><?= $block->escapeHtml(__('Print Order')) ?></span>
+  </a>
+
+  <?= $block->getChildHtml() ?>
+</div>
+
+
+<script>
+  function openPopup(){
+
+    require(
+     [
+     'jquery',
+     'Magento_Ui/js/modal/modal'
+
+     ],
+     function (
+       $,
+       modal
+       ) {
+      var modaloption = {
+        type: 'popup',
+
+        responsive: true,
+        title: 'Order Cancellation Confirmation',
+        modalClass: 'modal-popup-ordercancel',
+        innerScroll: false,
+        clickableOverlay: true,
+        modalcloseBtn: true,
+        buttons: [{
+          text: $.mage.__('Cancel'),
+          class: '',
+          click: function () {
+            this.closeModal();
+          },
+
+        },
+        {
+          text: $.mage.__('Submit Request'),
+          class: 'action-primary',
+          click: function () {
+            var form_data = $("#comment").val();
+            console.log(form_data);
+            jQuery('#ajax_loader1').show();
+            $.ajax({
+              url: "<?php  echo $block->getBaseUrl() . 'cancelorder/Index/Config';?>",
+              type: 'POST',
+              showLoader: true,
+              data: { 'reason' : form_data, 'state' : "<?php echo $_order->getState() ?>", 'status' : "<?php echo $_order->getStatusLabel() ?>", 'entityId': "<?php echo $_order->getEntityId() ?>" },
+              complete: function(){
+                window.location.reload();
+              }
+            });
+
+            this.closeModal();
+          }
+        }]
+      };
+      var callforoption = modal(modaloption, $('#popup-modal-ordercancel'));
+      $('#popup-modal-ordercancel').modal('openModal');
+    }
+    );
+
+  }
+</script>

@@ -1,0 +1,17 @@
+{
+    "Softnoesisorder_cancel_request": {
+        "column": {
+            "Id": true,
+            "request_id": true,
+            "order_cancel_reason": true,
+            "status": true,
+            "state": true,
+            "customer_email": true,
+            "customer_name": true,
+            "created_at": true
+        },
+        "index": {
+            "request_id": true
+        }
+    }
+}

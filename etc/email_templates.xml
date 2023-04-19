@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softnoesis
+ * Copyright(C) 04/2023 Softnoesis <ideveloper1990@gmail.com>
+ * @package Softnoesis_CancelOrder
+ * @copyright Copyright(C) 2015 Softnoesis (ideveloper1990@gmail.com)
+ * @author Softnoesis <ideveloper1990@gmail.com>
+ */
+-->
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+ 	<template id="cancelorder_email_settings_email_template" label="Custom Email Template Magento 2" file="ks_email_file.html" type="html" module="Softnoesis_CancelOrder" area="frontend"/>
+ 	<template id="cancelorder_email_cancel_email_template" label="Custom Email Template Magento 2" file="ks_cancel_email.html" type="html" module="Softnoesis_CancelOrder" area="adminhtml"/>
+ </config>

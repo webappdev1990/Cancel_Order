@@ -1,0 +1,47 @@
+<!--@subject {{trans "Order Cancel  Confirmation."}} @-->
+<!--@vars {
+"var message_1":"Custom Message 1",
+"var message_2":"Custom Message 2"
+} @-->
+
+ <!--@styles
+   .email-info {  }
+   .table-info {margin-top:10px;width:100%;}
+   .products {width:100%; }
+   .header-info {text-align: center;border-bottom: 1px solid #cccccc;
+    }
+ @--> 
+<!-- $customer-name, $email, $orderid, $reason, $prodname -->
+
+{{template config_path="design/email/header_template"}}
+<div class="cls-mail" style="border: 2px solid #4d90fe; padding: 10px 10px 10px 10px;">
+<div class="header-info">
+     <h2> Order Cancel  Confirmation</h2>
+</div>
+<table class="table-info">
+    <tr class="email-info">
+        <td><b>{{trans "Customer Name:"}}</b></td>
+        <td>{{trans  "%customer_name" customer_name=$customer-name}}</td>
+    </tr>
+    <tr>
+        <td><b>{{trans "Email:"}}</b></td>
+        <td>{{trans  "%email" email=$email}}</td>
+    </tr>
+    <tr>
+        <td><b>{{trans "Message:"}}</b></td>
+        <td>{{trans "Your order for orderId -"}}
+            <b>{{trans "%orderid " orderid=$orderid}}</b>
+            {{trans "is cancelled."}}
+        </td>
+    </tr>
+    <tr>
+        <td><b>{{trans "Reason: "}}</b></td>
+        <td>{{trans "%reason" reason=$reason}}</td>
+    </tr>
+</table>
+<div class="cls-product-info">
+{{layout handle="email_product_list" order_id=$orderid area="frontend"}}       
+</div>
+<div class="cls-thanks"><span class="cls-th" style="font-size: 28px; padding: 10px 10px 10px 10px;"><center>Thank You</center></span></div>
+</div>
+{{template config_path="design/email/footer_template"}}
